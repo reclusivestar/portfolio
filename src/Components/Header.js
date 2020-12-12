@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import TypeWriter from './TypeWriter/TypeWriter'
 
 class Header extends Component {
   render() {
@@ -12,6 +13,9 @@ class Header extends Component {
         return <li key={network.name}><a href={network.url}><i className={network.className}></i></a></li>
       })
     }
+
+    let msgs = ["I'm a full-stack web developer and a recent Computer Science graduate from Cal Poly San Luis Obispo.",
+    "I'm currently looking for full-time opportunities.","My favourite technology stack is React, AWS and SQL."];
 
     return (
       <header id="home">
@@ -29,17 +33,7 @@ class Header extends Component {
 
       </nav>
 
-      <div className="row banner">
-         <div className="banner-text">
-            <h1 className="responsive-headline">Hi, I'm Tanmay Kumar.</h1>
-            <h3>I'm a full-stack web developer and a recent Computer Science graduate from Cal Poly San Luis Obispo. 
-               I'm currently looking for full-time opportunities. My favourite technology stack is React, AWS and SQL.</h3>
-            <hr />
-            <ul className="social">
-               {networks}
-            </ul>
-         </div>
-      </div>
+      <TypeWriter messages={msgs} />
 
       <p className="scrolldown">
          <a className="smoothscroll" href="#portfolio"><i className="icon-down-circle"></i></a>
