@@ -8,7 +8,9 @@
     "react-dom": "^16.2.0",
     "react-ga": "^2.7.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^4.0.1"
+    "react-scripts": "^4.0.1",
+    "react-spring-3d-carousel": "^1.2.0",
+    "uuid": "^8.3.2"
   },
   "scripts": {
     "start": "react-scripts start",

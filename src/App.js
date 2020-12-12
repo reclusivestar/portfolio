@@ -8,7 +8,8 @@ import About from './Components/About';
 import Resume from './Components/Resume';
 import Contact from './Components/Contact';
 import Portfolio from './Components/Portfolio';
-import CCI from './Components/CCI';
+import CCI from './Components/cci/CCI';
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -55,8 +56,8 @@ class App extends Component {
           <Route exact path="/">
             <div className="App">
               <Header data={this.state.resumeData.main}/>
-              <About data={this.state.resumeData.main}/>
-              <Resume data={this.state.resumeData.resume}/>
+              {/*<About data={this.state.resumeData.main}/>
+              <Resume data={this.state.resumeData.resume}/>*/}
               <Portfolio data={this.state.resumeData.portfolio}/>
               <Contact data={this.state.resumeData.main}/>
               <Footer data={this.state.resumeData.main}/>
