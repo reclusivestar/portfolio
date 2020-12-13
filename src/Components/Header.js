@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import TypeWriter from './TypeWriter/TypeWriter'
+import night from '../night.webm'
+
 
 class Header extends Component {
   render() {
@@ -15,7 +17,7 @@ class Header extends Component {
     }
 
     let msgs = ["I'm a full-stack web developer and a recent Computer Science graduate from Cal Poly San Luis Obispo.",
-    "I'm currently looking for full-time opportunities.","My favourite technology stack is React, AWS and SQL."];
+    "My favourite technology stack is React, AWS and SQL."];
 
     return (
       <header id="home">
@@ -32,6 +34,10 @@ class Header extends Component {
          </ul>
 
       </nav>
+
+      <video className='videoTag' autoPlay loop muted>
+         <source src={night} type='video/webm' />
+      </video>
 
       <TypeWriter messages={msgs} />
 
