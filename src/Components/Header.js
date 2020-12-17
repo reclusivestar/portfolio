@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import TypeWriter from './TypeWriter/TypeWriter'
-import night from '../night.webm'
+import night from '../videos/night.webm'
 
 
 class Header extends Component {

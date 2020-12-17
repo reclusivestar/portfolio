@@ -9,6 +9,7 @@ import Resume from './Components/Resume';
 import Contact from './Components/Contact';
 import Portfolio from './Components/Portfolio';
 import CCI from './Components/cci/CCI';
+import PBIS from './Components/pbis/PBIS';
 
 import {
   BrowserRouter as Router,
@@ -66,6 +67,9 @@ class App extends Component {
           <Route path="/cci">
             <CCI />
           </Route>   
+          <Route path="/pbis">
+            <PBIS />
+          </Route>
         </Switch>
       </Router>
     );
