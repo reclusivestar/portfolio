@@ -3,18 +3,17 @@ import React, { Component } from 'react';
 class Contact extends Component {
   render() {
 
-    if(this.props.data){
-      var name = this.props.data.name;
-      var street = this.props.data.address.street;
-      var city = this.props.data.address.city;
-      var state = this.props.data.address.state;
-      var zip = this.props.data.address.zip;
-      var phone= this.props.data.phone;
-      var email = this.props.data.email;
-      var message = this.props.data.contactmessage;
-    }
+   var name = "Tanmay Kumar"
+   var street = "374 Ramona Drive"
+   var city = "San Luis Obispo"
+   var state = "CA"
+   var zip = "93405"
+   var phone= "805-602-1511"
+   var email = "tanmaysk1@gmail.com"
+   var message = "I'm currently open to full-time opportunities. Please see contact details below."
 
-    return (
+
+   return (
       <section id="contact">
 
          <div className="row section-head">
