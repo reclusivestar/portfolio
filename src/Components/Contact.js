@@ -74,8 +74,7 @@ class Contact extends Component {
            </div>
 
 
-            <aside className="four columns footer-widgets">
-               <div className="widget widget_contact">
+            <aside className="four columns">
 
 					   <h4>Address and Phone</h4>
 					   <p className="address">
@@ -84,15 +83,10 @@ class Contact extends Component {
 						   {city}, {state} {zip}<br />
 						   <span>{phone}</span>
 					   </p>
-				   </div>
-
-               <div className="widget widget_tweets">
-               
+			
                   <p>
                      <a href="/"><i className="fa fa-download"></i> Download Resume</a>
                   </p>
-
-            </div>
 
             </aside>
       </div>

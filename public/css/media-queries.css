@@ -257,7 +257,7 @@
 
    #portfolio-wrapper .columns { margin-bottom: 36px; }
    .portfolio-item .item-wrap {
-      width: 20em;
+      width: 15em;
    }
 
    #portfolio h1 {
@@ -265,7 +265,7 @@
    }
 
    #carousel {
-      margin-left: 3em;
+      margin-left: 2.2em;
    }
 
    /* Testimonials Section
@@ -318,6 +318,11 @@
      	margin-bottom: 6px;    	
       width: 100%;
    }
+
+   #contact aside {
+      margin-left: -2.7em;
+   }
+
    #contact button.submit { margin: 30px 0 24px 0; }
    #message-warning, #message-success {
       width: 100%;
@@ -335,6 +340,10 @@
    /* social links */
    footer .social-links { font-size: 22px; }
    footer .social-links li { margin-left: 18px; }
+
+   footer .twelve {
+      margin-left: 9.9em;
+   }
 
    /* Go To Top Button */
    #go-top { margin-left: -22px; }
