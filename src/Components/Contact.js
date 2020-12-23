@@ -4,10 +4,8 @@ class Contact extends Component {
   render() {
 
    var name = "Tanmay Kumar"
-   var street = "374 Ramona Drive"
    var city = "San Luis Obispo"
    var state = "CA"
-   var zip = "93405"
    var phone= "805-602-1511"
    var email = "tanmaysk1@gmail.com"
    var message = "I'm currently open to full-time opportunities. Please see contact details below."
@@ -79,8 +77,7 @@ class Contact extends Component {
 					   <h4>Address and Phone</h4>
 					   <p className="address">
 						   {name}<br />
-						   {street} <br />
-						   {city}, {state} {zip}<br />
+						   {city}, {state} <br />
 						   <span>{phone}</span>
 					   </p>
 			
