@@ -1,15 +1,36 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 
-class Contact extends Component {
-  render() {
+export default function Contact()  {
 
-   var name = "Tanmay Kumar"
-   var city = "San Luis Obispo"
-   var state = "CA"
-   var phone= "805-602-1511"
-   var email = "tanmaysk1@gmail.com"
-   var message = "I'm currently open to full-time opportunities. Please see contact details below."
+   const [name, setName] = useState("");
+   const [email, setEmail] = useState("");
+   const [subject, setSubject] = useState("");
+   const [message, setMessage] = useState("");
+   const [error, setError] = useState({name: false, email: false, 
+      message: false});
+   // don't validate if form has not been touched
+   const [touched, setTouched] = useState(false);
+   
+   const errorStyle =  {border: "1px solid #D72828"}
 
+   function handleSubmit(e){
+      e.preventDefault();
+      console.log(message);
+   }
+
+   function errorPresent(error){
+      return !(error.name === false && error.email === false 
+      && error.message === false);
+   }
+
+   useEffect(() => {
+      if (touched) 
+         setError({...error, 
+               name: name === "", 
+               email: email === "", 
+               message: message === ""
+         });
+   }, [name, email, message, touched]);
 
    return (
       <section id="contact">
@@ -24,7 +45,8 @@ class Contact extends Component {
 
             <div className="ten columns">
 
-                  <p className="lead">{message}</p>
+                  <p className="lead">I'm currently open to full-time opportunities. 
+                  Please see contact details below.</p>
 
             </div>
 
@@ -33,31 +55,35 @@ class Contact extends Component {
          <div className="row">
             <div className="eight columns">
 
-               <form action="" method="post" id="contactForm" name="contactForm">
+               <form onClick={() => setTouched(true)} onSubmit={handleSubmit} id="contactForm" name="contactForm">
 					<fieldset>
 
                   <div>
 						   <label htmlFor="contactName">Name <span className="required">*</span></label>
-						   <input type="text" defaultValue="" size="35" id="contactName" name="contactName" onChange={this.handleChange}/>
+                     <input style={error.name? errorStyle: {}} type="text" size="35" id="contactName" 
+                     name="contactName" onChange={e => setName(e.target.value)}/>
                   </div>
 
                   <div>
 						   <label htmlFor="contactEmail">Email <span className="required">*</span></label>
-						   <input type="text" defaultValue="" size="35" id="contactEmail" name="contactEmail" onChange={this.handleChange}/>
+                     <input style={error.email? errorStyle: {}} type="text" size="35" id="contactEmail" 
+                     name="contactEmail" onChange={e => setEmail(e.target.value)}/>
                   </div>
 
                   <div>
 						   <label htmlFor="contactSubject">Subject</label>
-						   <input type="text" defaultValue="" size="35" id="contactSubject" name="contactSubject" onChange={this.handleChange}/>
+                     <input type="text" size="35" id="contactSubject" 
+                     name="contactSubject" onChange={e => setSubject(e.target.value)}/>
                   </div>
 
                   <div>
                      <label htmlFor="contactMessage">Message <span className="required">*</span></label>
-                     <textarea cols="50" rows="15" id="contactMessage" name="contactMessage"></textarea>
+                     <textarea style={error.message? errorStyle: {}} cols="50" rows="15" id="contactMessage" 
+                     name="contactMessage" onChange={e => setMessage(e.target.value)}></textarea>
                   </div>
 
                   <div>
-                     <button className="submit">Submit</button>
+                     <button type="submit" className="submit" disabled={!touched || errorPresent(error)}>Submit</button>
                      <span id="image-loader">
                         <img alt="" src="images/loader.gif" />
                      </span>
@@ -76,10 +102,10 @@ class Contact extends Component {
 
 					   <h4>Address and Phone</h4>
 					   <p className="address">
-						   {name}<br />
-						   {city}, {state} <br />
-                     {email} <br />
-						   <span>{phone}</span>
+                     Tanmay Kumar<br />
+						   San Luis Obispo, CA<br />
+                     tanmaysk1@gmail.com <br />
+						   <span>805-602-1511</span>
 					   </p>
 			
                   <p>
@@ -89,8 +115,5 @@ class Contact extends Component {
             </aside>
       </div>
    </section>
-    );
-  }
+   );
 }
-
-export default Contact;
