@@ -12,6 +12,7 @@ export default function Contact()  {
       message: false});
    // don't validate if form has not been touched
    const [touched, setTouched] = useState(false);
+   const [invalidEmail, setInvalidEmail] = useState("Email cannot be empty");
    
    const errorStyle =  {border: "1px solid #D72828"}
 
@@ -28,15 +29,26 @@ export default function Contact()  {
    useEffect(() => {
       if (touched) 
          setError({...error, 
-               name: name === "", 
-               email: email === "", 
-               message: message === ""
+                  name: name === "", 
+                  email: email === "", 
+                  message: message === ""
          });
    }, [name, email, message, touched]);
 
-   function validEmail(email){
-      return emailRegex({exact: true}).test(email);
-   }
+   useEffect(() => {
+      if (touched) {
+         if (email === ""){
+            setError({...error,
+               email: true});
+            setInvalidEmail("Email cannot be empty");
+         }
+         else if (!(emailRegex({exact: true}).test(email))) {
+            setError({...error,
+                     email: true});
+            setInvalidEmail("Please enter a valid email");  
+         }
+      }
+   }, [email]);
 
    return (
       <section id="contact">
@@ -75,7 +87,7 @@ export default function Contact()  {
 
                   <div>
                      {error.email? <div className="helper">
-                        <span><img src={warning} /> Email cannot be empty</span>
+                        <span><img src={warning} /> {invalidEmail}</span>
                         </div> : ""}
 						   <label htmlFor="contactEmail">Email <span className="required">*</span></label>
                      <input style={error.email? errorStyle: {}} type="email" size="35" id="contactEmail" 
