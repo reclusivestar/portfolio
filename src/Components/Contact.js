@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import warning from './warning.png';
+import emailRegex from 'email-regex';
 
 export default function Contact()  {
 
@@ -32,6 +34,10 @@ export default function Contact()  {
          });
    }, [name, email, message, touched]);
 
+   function validEmail(email){
+      return emailRegex({exact: true}).test(email);
+   }
+
    return (
       <section id="contact">
 
@@ -59,14 +65,20 @@ export default function Contact()  {
 					<fieldset>
 
                   <div>
+                     {error.name? <div className="helper">
+                        <span><img src={warning} /> Name cannot be empty</span>
+                        </div> : ""}
 						   <label htmlFor="contactName">Name <span className="required">*</span></label>
                      <input style={error.name? errorStyle: {}} type="text" size="35" id="contactName" 
-                     name="contactName" onChange={e => setName(e.target.value)}/>
+                     name="contactName" onChange={e => setName(e.target.value)}/>               
                   </div>
 
                   <div>
+                     {error.email? <div className="helper">
+                        <span><img src={warning} /> Email cannot be empty</span>
+                        </div> : ""}
 						   <label htmlFor="contactEmail">Email <span className="required">*</span></label>
-                     <input style={error.email? errorStyle: {}} type="text" size="35" id="contactEmail" 
+                     <input style={error.email? errorStyle: {}} type="email" size="35" id="contactEmail" 
                      name="contactEmail" onChange={e => setEmail(e.target.value)}/>
                   </div>
 
@@ -77,6 +89,9 @@ export default function Contact()  {
                   </div>
 
                   <div>
+                     {error.message? <div className="helper">
+                        <span><img src={warning} /> Message cannot be empty</span>
+                        </div> : ""}
                      <label htmlFor="contactMessage">Message <span className="required">*</span></label>
                      <textarea style={error.message? errorStyle: {}} cols="50" rows="15" id="contactMessage" 
                      name="contactMessage" onChange={e => setMessage(e.target.value)}></textarea>
