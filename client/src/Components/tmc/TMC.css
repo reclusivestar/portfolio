@@ -1,0 +1,51 @@
+.tmc_box {
+    display: flex;           /* establish flex container */
+    align-items: center;
+}
+
+.vertical {
+    flex-direction: column;
+}
+
+.tmc_box video {
+    width: 100%;
+    height: auto;
+}
+
+.cms {
+    width: 45em;
+    height: auto;
+    margin-top: 4em;
+}
+
+.xml {
+    width: 100%;
+    height: auto;
+    margin-top: 1em;
+}
+
+.text {
+    font-size: 1.5em;
+    margin: 1em;
+    font-family: Garamond, serif;
+    color: white;
+    background: rgba(0, 0, 0, 0.25);
+    padding: 4px 8px;
+    max-width: 50em;
+}
+
+.tmc_box p {
+    color: rgb(216, 216, 126);
+    max-width: 30em;
+}
+
+.tmc_cover {
+    background: 
+    linear-gradient(
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.5)
+    ),
+    url(../Works/chp.jpg);
+    background-size: cover;
+    height: 100vh;
+}

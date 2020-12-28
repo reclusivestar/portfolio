@@ -1,0 +1,40 @@
+.box {
+    display: flex;           /* establish flex container */
+    align-items: center;
+    flex-direction: column;
+}
+
+.box video{
+    width: 100%;
+    height: auto;
+}
+
+
+.box .text {
+    font-size: 1.5em;
+    font-family: Garamond, serif;
+    color: white;
+    background: rgba(0, 0, 0, 0.25);
+    padding: 4px 8px;
+}
+
+.cover {
+    background: 
+    linear-gradient(
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.5)
+    ),
+    url(../Works/juvenile.png);
+    background-size: cover;
+    height: 100vh;
+}
+
+.mobile_cover {
+    background: 
+    linear-gradient(
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.5)
+    ),
+    url(../Works/juvenile.png);
+    background-size: cover;
+}
