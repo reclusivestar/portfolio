@@ -12,6 +12,7 @@ export default function Contact()  {
       message: false});
    // don't validate if form has not been touched
    const [touched, setTouched] = useState(false);
+   // helper text for email field
    const [invalidEmail, setInvalidEmail] = useState("Email cannot be empty");
    
    const errorStyle =  {border: "1px solid #D72828"}
@@ -30,7 +31,8 @@ export default function Contact()  {
       if (touched) 
          setError({...error, 
                   name: name === "", 
-                  email: email === "", 
+                  email: email === "" ||
+                  !(emailRegex({exact: true}).test(email)),
                   message: message === ""
          });
    }, [name, email, message, touched]);
@@ -38,13 +40,9 @@ export default function Contact()  {
    useEffect(() => {
       if (touched) {
          if (email === ""){
-            setError({...error,
-               email: true});
             setInvalidEmail("Email cannot be empty");
          }
          else if (!(emailRegex({exact: true}).test(email))) {
-            setError({...error,
-                     email: true});
             setInvalidEmail("Please enter a valid email");  
          }
       }
