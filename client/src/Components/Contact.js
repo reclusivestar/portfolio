@@ -3,6 +3,7 @@ import warning from './warning.png';
 import emailRegex from 'email-regex';
 
 export default function Contact()  {
+   const url = "http://localhost:3001/";
 
    const [name, setName] = useState("");
    const [email, setEmail] = useState("");
@@ -19,7 +20,23 @@ export default function Contact()  {
 
    function handleSubmit(e){
       e.preventDefault();
-      console.log(message);
+      let formData = {name: name, 
+                     email: email,
+                     subject: subject, 
+                     message: message
+                  };
+      fetch(url + "sendEmail", {
+         method: 'POST',
+         headers: {
+            'Content-Type': 'application/json'
+          },
+         body: JSON.stringify(formData)
+      })
+      .then(response => response.json())
+      .then(result => console.log(result))
+      .catch((error) => {
+         console.log('Error:', error);
+      });
    }
 
    function errorPresent(error){
