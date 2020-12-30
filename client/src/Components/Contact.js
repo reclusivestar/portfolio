@@ -15,7 +15,7 @@ export default function Contact()  {
    const [touched, setTouched] = useState(false);
    // helper text for email field
    const [invalidEmail, setInvalidEmail] = useState("Email cannot be empty");
-   // 0 is default, 1 is successfull and -1 is fail
+   // 0 is default (when not sent), 1 is successfully sent and -1 is fail
    const [sent, setSent] = useState(0);
    const [loading, setLoading] = useState(false);
    
@@ -148,7 +148,7 @@ export default function Contact()  {
                             <i className="fa fa-check"></i>
                             Your message was sent, thank you!<br />
                            </div> 
-               : <div id="message-warning"> Error boy</div>
+               : <div id="message-warning">Something went wrong :(</div>
                : ""}	   
            </div>
 

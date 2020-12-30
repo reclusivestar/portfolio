@@ -318,6 +318,12 @@
       float: none;
       width: 100%;
    }
+
+   #contact .helper {
+      margin-bottom: -3em;
+      margin-left: 7em;
+   }
+
    #contact input,
    #contact textarea,
    #contact select {
@@ -327,12 +333,12 @@
 
    #contact aside {
       margin-top: 72em;
-      margin-left: -37em;
+      margin-left: -36.5em;
    }
 
    #contact button.submit { margin: 30px 0 24px 0; }
    #message-warning, #message-success {
-      width: 100%;
+      width: 60%;
       margin-left: 0;
    }
 
