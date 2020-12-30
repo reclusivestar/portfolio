@@ -2,9 +2,21 @@ const express = require('express');
 const nodemailer = require("nodemailer");
 const creds = require('./config');
 const emailValidator = require('deep-email-validator'); 
+const { google } = require("googleapis");
+const OAuth2 = google.auth.OAuth2;
 
 const app = express();
 const port = 3001;
+const oauth2Client = new OAuth2(
+  creds.clientId,
+  creds.clientSecret, 
+  "https://developers.google.com/oauthplayground" // Redirect URL
+);
+
+oauth2Client.setCredentials({
+  refresh_token: creds.refreshToken
+});
+const accessToken = oauth2Client.getAccessToken()
 
 app.use(express.json());
 
@@ -30,41 +42,43 @@ app.post('/sendEmail', async function (req, res) {
     console.log(emailRes);
     if (!emailRes.valid)
       throw Error("Oops, you have entered an invalid email");
-    // Generate test SMTP service account from ethereal.email
-    // Only needed if you don't have a real mail account for testing
-    let testAccount = await nodemailer.createTestAccount();
 
-    // create reusable transporter object using the default SMTP transport
-    let transporter = nodemailer.createTransport({
-      host: "smtp.ethereal.email",
-      port: 587,
-      secure: false, // true for 465, false for other ports
-      auth: {
-        user: testAccount.user, // generated ethereal user
-        pass: testAccount.pass, // generated ethereal password
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      tls: {
+        rejectUnauthorized: false
       },
-    });
+      auth: {
+           type: "OAuth2",
+           user: creds.user, 
+           clientId: creds.clientId,
+           clientSecret: creds.clientSecret,
+           refreshToken: creds.refreshToken,
+           accessToken: accessToken
+    }});
 
-    // send mail with defined transport object
-    let info = await transporter.sendMail({
+    const mailOptions = {
       from: [
         {
           name: req.body.name,
-          address: req.body.email
+          address: creds.user
         }
       ], // sender address
-      to: "tanmaysk1@gmail.com", // list of receivers
+      to: creds.user, // list of receivers
       subject: req.body.subject, // Subject line
-      text: req.body.message, // plain text body
+      text: "Name: " + req.body.name + "\n" 
+      + "Email: " + req.body.email + "\n\n" 
+      + req.body.message, // plain text body
+    };
+
+    // send mail with defined transport object
+    transporter.sendMail(mailOptions, (error, response) => {
+      error ? res.status(400).send({
+                  message: "Something went wrong :("
+              }) 
+      : res.json({message: "Sent"});
+      transporter.close();
     });
-
-    console.log("Message sent: %s", info.messageId);
-    // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
-
-    // Preview only available when sending through an Ethereal account
-    console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
-    // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
-    res.json({message: "Sent"});
   } catch(e){
     res.status(400).send({
       message: e.toString()
