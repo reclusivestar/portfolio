@@ -16,8 +16,12 @@ export default function Contact()  {
    // helper text for email field
    const [invalidEmail, setInvalidEmail] = useState("Email cannot be empty");
    // 0 is default (when not sent), 1 is successfully sent and -1 is fail
-   const [sent, setSent] = useState(0);
+   const SUCCESS = 1;
+   const FAIL = -1;
+   const DEFAULT = 0;
+   const [sent, setSent] = useState(DEFAULT);
    const [loading, setLoading] = useState(false);
+   const [errorText, setErrorText] = useState("");
    
    const errorStyle =  {border: "1px solid #D72828"}
 
@@ -39,13 +43,14 @@ export default function Contact()  {
       });
       setLoading(false);
       if (!response.ok) {    
-         const message = `An error has occured: ${response.status}`; 
-         setSent(-1);   
-         console.log(message);  
+         const responseObj = await response.json();
+         const message = `An error has occured: ${responseObj.message}`; 
+         setSent(FAIL);   
+         setErrorText(responseObj.message);
          return;
       }
       const result = await response.json();
-      setSent(1);
+      setSent(SUCCESS);
       console.log(result);
    }
   
@@ -148,7 +153,7 @@ export default function Contact()  {
                             <i className="fa fa-check"></i>
                             Your message was sent, thank you!<br />
                            </div> 
-               : <div id="message-warning">Something went wrong :(</div>
+               : <div id="message-warning">{errorText}</div>
                : ""}	   
            </div>
 

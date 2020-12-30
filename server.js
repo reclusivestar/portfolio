@@ -1,6 +1,7 @@
 const express = require('express');
 const nodemailer = require("nodemailer");
 const creds = require('./config');
+const emailValidator = require('deep-email-validator'); 
 
 const app = express();
 const port = 3001;
@@ -20,6 +21,15 @@ app.use(function(req, res, next) {
 app.post('/sendEmail', async function (req, res) {
   try {
     console.log(req.body);
+    if (req.body.name === "" || req.body.email === "" || 
+      req.body.message === ""){
+        throw Error("One or more required fields were empty");
+    }
+    let emailRes = await emailValidator.validate({email: req.body.email,
+    validateSMTP: false});
+    console.log(emailRes);
+    if (!emailRes.valid)
+      throw Error("Oops, you have entered an invalid email");
     // Generate test SMTP service account from ethereal.email
     // Only needed if you don't have a real mail account for testing
     let testAccount = await nodemailer.createTestAccount();
@@ -57,7 +67,7 @@ app.post('/sendEmail', async function (req, res) {
     res.json({message: "Sent"});
   } catch(e){
     res.status(400).send({
-      message: 'This is an error!'
+      message: e.toString()
     });
     console.log(e.toString());
   }
