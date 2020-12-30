@@ -1,5 +1,6 @@
 const express = require('express');
 const nodemailer = require("nodemailer");
+const creds = require('./config');
 
 const app = express();
 const port = 3001;
@@ -36,10 +37,15 @@ app.post('/sendEmail', async function (req, res) {
 
     // send mail with defined transport object
     let info = await transporter.sendMail({
-      from: 'tanmaysk12@gmail.com', // sender address
+      from: [
+        {
+          name: req.body.name,
+          address: req.body.email
+        }
+      ], // sender address
       to: "tanmaysk1@gmail.com", // list of receivers
-      subject: "Hello ✔", // Subject line
-      text: "Hello world?", // plain text body
+      subject: req.body.subject, // Subject line
+      text: req.body.message, // plain text body
     });
 
     console.log("Message sent: %s", info.messageId);

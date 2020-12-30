@@ -15,30 +15,40 @@ export default function Contact()  {
    const [touched, setTouched] = useState(false);
    // helper text for email field
    const [invalidEmail, setInvalidEmail] = useState("Email cannot be empty");
+   // 0 is default, 1 is successfull and -1 is fail
+   const [sent, setSent] = useState(0);
+   const [loading, setLoading] = useState(false);
    
    const errorStyle =  {border: "1px solid #D72828"}
 
-   function handleSubmit(e){
+   async function handleSubmit(e){
       e.preventDefault();
-      let formData = {name: name, 
-                     email: email,
-                     subject: subject, 
-                     message: message
-                  };
-      fetch(url + "sendEmail", {
+      let formData = {
+         name: name, 
+         email: email,
+         subject: subject, 
+         message: message
+      };
+      setLoading(true);
+      const response = await fetch(url + "sendEmail", {
          method: 'POST',
          headers: {
             'Content-Type': 'application/json'
-          },
+            },
          body: JSON.stringify(formData)
-      })
-      .then(response => response.json())
-      .then(result => console.log(result))
-      .catch((error) => {
-         console.log('Error:', error);
       });
+      setLoading(false);
+      if (!response.ok) {    
+         const message = `An error has occured: ${response.status}`; 
+         setSent(-1);   
+         console.log(message);  
+         return;
+      }
+      const result = await response.json();
+      setSent(1);
+      console.log(result);
    }
-
+  
    function errorPresent(error){
       return !(error.name === false && error.email === false 
       && error.message === false);
@@ -126,17 +136,20 @@ export default function Contact()  {
 
                   <div>
                      <button type="submit" className="submit" disabled={!touched || errorPresent(error)}>Submit</button>
+                     {loading? 
                      <span id="image-loader">
                         <img alt="" src="images/loader.gif" />
-                     </span>
+                     </span> : ""}
                   </div>
 					</fieldset>
 				   </form>
-
-           <div id="message-warning"> Error boy</div>
-				   <div id="message-success">
-                  <i className="fa fa-check"></i>Your message was sent, thank you!<br />
-				   </div>
+               {sent !== 0 ? 
+               sent === 1 ? <div id="message-success">
+                            <i className="fa fa-check"></i>
+                            Your message was sent, thank you!<br />
+                           </div> 
+               : <div id="message-warning"> Error boy</div>
+               : ""}	   
            </div>
 
 
