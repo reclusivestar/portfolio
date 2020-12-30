@@ -9,6 +9,7 @@ client/node_modules
 
 # production
 /build
+/config.js
 
 # misc
 .DS_Store
