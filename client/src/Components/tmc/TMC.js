@@ -22,7 +22,7 @@ export default function TMC(props) {
                     <div style={{fontSize: "1.1em"}} className="text">Developed a web based GUI tool in JavaScript that allows you to place traffic markers 
                     on Google Maps and assign colors to them, which then can be saved into an XML file to be used by the Visualizer tool. 
                     The overall project significantly reduced time to view and create traffic events by 80%. <br /><br />
-                    Please contact me to see the code and/or a live demo.
+                    Please <a href="/#contact">contact me</a> to see the code and/or a live demo.
                     </div>
                     <div id="tmc_xml" className="tmc_box vertical">
                         <img style={{padding: "1em"}} src={traffic} alt="traffic" className="xml" />
@@ -68,7 +68,7 @@ export default function TMC(props) {
                         <div className="text">Developed a web based GUI tool in JavaScript that allows you to place traffic markers 
                         on Google Maps and assign colors to them, which then can be saved into an XML file to be used by the Visualizer tool. 
                         The overall project significantly reduced time to view and create traffic events by 80%. <br /><br />
-                        Please contact me to see the code and/or a live demo.
+                        Please <a href="/#contact">contact me</a> to see the code and/or a live demo.
                         </div>
                         <div className="tmc_box vertical">
                             <img src={traffic} alt="traffic" className="xml" />

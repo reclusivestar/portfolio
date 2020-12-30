@@ -20,7 +20,7 @@ export default function PBIS(props) {
                     web app for the juveniles to cash in on points they would receive for good behavior. 
                     Officers can also view/search user transactions and adjust user data. <br /><br />
             The site is hosted using an AWS S3 bucket <a href="https://pbiscommissary.calpoly.io/">here. </a>
-            Please contact me to receive test authentication details (which you'll need in order to login and use the site).
+            Please <a href="/#contact">contact me</a> to receive test authentication details (which you'll need in order to login and use the site).
             </div>   
             <div style={{padding: "1em", width:"100%", marginTop: "2em"}}> 
                 <video controls loop muted>
@@ -48,7 +48,7 @@ export default function PBIS(props) {
                     then communicated with the AWS Lambda functions in order to handle requests and retrieve data 
                     from the AWS RDS layer. The RDS layer was in a private and secure subnet and used a MySQL Database <br /><br />
                     The site is hosted using an AWS S3 bucket <a href="https://pbiscommissary.calpoly.io/">here. </a>
-                    Please contact me to receive test authentication details (which you'll need in order to login and use the site).
+                    Please <a href="/#contact">contact me</a> to receive test authentication details (which you'll need in order to login and use the site).
                     </div>   
                 </div>
             </Slide>

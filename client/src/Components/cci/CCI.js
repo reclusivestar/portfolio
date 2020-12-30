@@ -22,10 +22,13 @@ export default function CCI(props) {
                         <a href="https://ceng.calpoly.edu/connection/2020/07/cal-poly-students-create-space-cybercrime-for-this-years-virtual-def-con-hacker-convention/" target="_blank"> Here's </a>
                         an article if you want to know more about the challenge. <br /><br />
                         I also had to incorporate these contraints throughtout the app - 
-                        The entire challenge was timed at 6 hours and you were not able to progress unless the clues were found at each stage.</p>
+                        The entire challenge was timed at 6 hours and you were not able to progress unless the clues were found at each stage.
+                        <br /> <br /> Please <a href="/#contact">contact me</a> if you're interested 
+                        in seeing the code.
+                        </p>
                 </div>
             </div>
-            <div className="cci_cover cci_box">
+            <div className="cci_cover cci_box" style={{marginTop: "2em"}}>
                 <div style={{width:"90%"}}> 
                     <a href={Login} target="_blank">
                         <div className="image_container">                       
@@ -95,7 +98,10 @@ export default function CCI(props) {
                         <a href="https://ceng.calpoly.edu/connection/2020/07/cal-poly-students-create-space-cybercrime-for-this-years-virtual-def-con-hacker-convention/" target="_blank"> Here's </a>
                         an article if you want to know more about the challenge. <br /><br />
                         I also had to incorporate these contraints throughtout the app - 
-                        The entire challenge was timed at 6 hours and you were not able to progress unless the clues were found at each stage.</p>
+                        The entire challenge was timed at 6 hours and you were not able to progress unless the clues were found at each stage.
+                        <br /> <br /> Please <a href="/#contact">contact me</a> if you're interested 
+                        in seeing the code.
+                        </p>
                 </div>
             </div>
         </Slide>

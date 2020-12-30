@@ -42,8 +42,8 @@
 .tmc_cover {
     background: 
     linear-gradient(
-    rgba(0, 0, 0, 0.5),
-    rgba(0, 0, 0, 0.5)
+    rgba(0, 0, 0, 0.65),
+    rgba(0, 0, 0, 0.65)
     ),
     url(../Works/chp.jpg);
     background-size: cover;
