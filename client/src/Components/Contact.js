@@ -3,7 +3,7 @@ import warning from './warning.png';
 import emailRegex from 'email-regex';
 
 export default function Contact()  {
-   const url = "http://localhost:3001/";
+   const url = "https://portfolio-tanmay.herokuapp.com/";
 
    const [name, setName] = useState("");
    const [email, setEmail] = useState("");
