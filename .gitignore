@@ -9,7 +9,7 @@ client/node_modules
 
 # production
 
-/config.js
+
 
 # misc
 .DS_Store
