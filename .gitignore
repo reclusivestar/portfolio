@@ -8,7 +8,7 @@ client/node_modules
 /coverage
 
 # production
-
+/config.js
 
 
 # misc
