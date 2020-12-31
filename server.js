@@ -7,7 +7,7 @@ const { google } = require("googleapis");
 const OAuth2 = google.auth.OAuth2;
 
 const app = express();
-const port = 3001;
+const port = process.env.PORT || 3001;
 const oauth2Client = new OAuth2(
   creds.clientId,
   creds.clientSecret, 
