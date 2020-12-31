@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const nodemailer = require("nodemailer");
 const creds = require('./config');
 const emailValidator = require('deep-email-validator'); 
@@ -20,13 +21,20 @@ const accessToken = oauth2Client.getAccessToken()
 
 app.use(express.json());
 
+app.use(express.static(path.join(__dirname, 'build')));
+
+
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
 // console.log that your server is up and running
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "http://localhost:3000");
   res.header("Access-Control-Allow-Headers",  "Origin, X-Requested-With, Content-Type, Accept");
-  res.header("Access-Control-Allow-Methods", "POST");
+  res.header("Access-Control-Allow-Methods", "POST, GET");
   next();
 });
 

@@ -7,7 +7,7 @@ class Header extends Component {
   render() {
 
     let msgs = ["I'm a full-stack web developer and a recent Computer Science graduate from Cal Poly San Luis Obispo.",
-    "My favourite technology stack is React, AWS and SQL."];
+    "My favourite technology stack is React, AWS, Node.js and SQL."];
 
     return (
       <header id="home">
