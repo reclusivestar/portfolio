@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import TypeWriter from './TypeWriter/TypeWriter'
-import night from '../media/night.webm'
+import night from '../media/night.mp4'
 
 
 class Header extends Component {
@@ -26,7 +26,7 @@ class Header extends Component {
       </nav>
 
       <video className='videoTag' autoPlay loop muted>
-         <source src={night} type='video/webm' />
+         <source src={night} type='video/mp4' />
       </video>
 
       <TypeWriter messages={msgs} />
