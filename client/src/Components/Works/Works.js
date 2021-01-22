@@ -4,11 +4,38 @@ import { config } from "react-spring";
 import cci from './cci.jpg';
 import juvenile from './juvenile.png';
 import chp from './chp.jpg';
-import movie from './movie.png'
+import movie from './movie.png';
+import vaccine from './vaccine.jpg';
 
 export default function Works(props) {
 
     const slides = [
+    {
+        key: uuidv4(),
+        content:<div>
+                    <a href="https://reclusivestar.github.io/vaccine_tracker/" target="_blank" title="Vaccine Tracker">
+                        <div className="columns portfolio-item">
+                            <div className="item-wrap">
+                                <img src={vaccine} alt="2" />
+                                <div className="overlay">
+                                    <div className="portfolio-item-meta">
+                                    <h5>Vaccine Tracker</h5>
+                                        <p>Developed a React App that visualizes vaccine data pulled daily from John Hopkins University
+                                            in a US map over a timeline.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="link-icon"><i className="fa fa-link"></i></div>
+                            </div>
+                        </div>
+                    </a>
+                    <div style={{marginLeft:"1.4em"}}>
+                        <ul className="social-links">
+                            <li key="github"><a style={{fontSize: "1.1em"}} href="https://github.com/reclusivestar/vaccine_tracker">Code <i className="fa fa-github"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+    },
     {
       key: uuidv4(),
       content:  <a href="/pbis" title="Commissary App">
@@ -81,7 +108,7 @@ export default function Works(props) {
     {
         key: uuidv4(),
         content:<div>
-                    <a href="https://moviesapp1.azurewebsites.net/" title="Movie List Maker">
+                    <a href="https://moviesapp1.azurewebsites.net/" target="_blank" title="Movie List Maker">
                         <div className="columns portfolio-item">
                             <div className="item-wrap">
                                 <img src={movie} alt="2" />
