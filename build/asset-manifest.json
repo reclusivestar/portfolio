@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/static/css/main.40206a1a.chunk.css",
-    "main.js": "/static/js/main.8ac71f5a.chunk.js",
-    "main.js.map": "/static/js/main.8ac71f5a.chunk.js.map",
+    "main.js": "/static/js/main.9887adb8.chunk.js",
+    "main.js.map": "/static/js/main.9887adb8.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.66835b39.js",
     "runtime-main.js.map": "/static/js/runtime-main.66835b39.js.map",
     "static/css/2.34b29efe.chunk.css": "/static/css/2.34b29efe.chunk.css",
@@ -26,6 +26,7 @@
     "static/media/page2.e8738926.jpg": "/static/media/page2.e8738926.jpg",
     "static/media/page3.e318951e.jpg": "/static/media/page3.e318951e.jpg",
     "static/media/traffic_events.2ac7be08.jpg": "/static/media/traffic_events.2ac7be08.jpg",
+    "static/media/vaccine.459b1893.jpg": "/static/media/vaccine.459b1893.jpg",
     "static/media/visualizer.f449d963.mp4": "/static/media/visualizer.f449d963.mp4",
     "static/media/warning.a0c67b5f.png": "/static/media/warning.a0c67b5f.png"
   },
@@ -34,6 +35,6 @@
     "static/css/2.34b29efe.chunk.css",
     "static/js/2.dc0a42bc.chunk.js",
     "static/css/main.40206a1a.chunk.css",
-    "static/js/main.8ac71f5a.chunk.js"
+    "static/js/main.9887adb8.chunk.js"
   ]
 }
